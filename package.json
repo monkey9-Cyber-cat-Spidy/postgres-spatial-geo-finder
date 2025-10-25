@@ -1,8 +1,27 @@
 {
   "name": "postgres-spatial-geo-finder",
-  "version": "1.2.0",
+  "version": "1.0.0",
+  "description": "High performance PostgreSQL PostGIS spatial geospatial indexing engine and REST API for radial proximity, bounding box, and polygon spatial queries.",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js"
+  },
   "dependencies": {
     "express": "^4.19.2",
-    "pg": "^8.12.0"
-  }
+    "pg": "^8.11.5"
+  },
+  "keywords": [
+    "postgresql",
+    "postgis",
+    "spatial",
+    "geospatial",
+    "gis",
+    "haversine",
+    "bounding-box",
+    "geo-indexing"
+  ],
+  "author": "Kuncham Venkata Satya Manikanta",
+  "license": "MIT"
 }

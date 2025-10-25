@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgis:
+    image: postgis/postgis:16-3.4-alpine
+    container_name: spatial_postgis
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: spatial_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./migrations:/docker-entrypoint-initdb.d
+    restart: always
+
+  spatial-api:
+    build: .
+    container_name: spatial_geo_api
+    environment:
+      - PORT=5000
+      - DATABASE_URL=postgresql://postgres:postgrespassword@postgis:5432/spatial_db
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgis
+    restart: always
